@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Consumer Rights Commission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #0f1117;
+      --paper:     #f7f5f0;
+      --mid:       #6b6b6b;
+      --rule:      #d4cfc5;
+      --accent:    #1a3a5c;
+      --accent-lt: #e8eef4;
+    }
+
+    body {
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      border-bottom: 1px solid var(--rule);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 56px;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 500;
+      color: var(--mid);
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+
+    /* ── HERO ── */
+    .hero {
+      border-bottom: 1px solid var(--rule);
+      padding: 5rem 2rem 4rem;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      max-width: 720px;
+    }
+    .hero p {
+      font-size: 1.1rem;
+      color: var(--mid);
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+    .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: .65rem 1.4rem;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 2px;
+      transition: background .15s, color .15s;
+      cursor: pointer;
+      border: none;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #122a45; }
+    .btn-outline { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+    .btn-outline:hover { background: var(--accent-lt); }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: var(--accent);
+      color: #fff;
+      overflow: hidden;
+      padding: .5rem 0;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .ticker-inner {
+      display: flex;
+      gap: 4rem;
+      white-space: nowrap;
+      animation: ticker 22s linear infinite;
+    }
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* ── GRID ── */
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 3.5rem 2rem;
+    }
+    .section-label {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--mid);
+      border-bottom: 1px solid var(--rule);
+      padding-bottom: .6rem;
+      margin-bottom: 2rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5px;
+      background: var(--rule);
+      border: 1.5px solid var(--rule);
+    }
+    .card {
+      background: var(--paper);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: .75rem;
+    }
+    .card-tag {
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+    .card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .card p { font-size: .88rem; color: var(--mid); }
+    .card-link {
+      margin-top: auto;
+      font-size: .78rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .card-link:hover { text-decoration: underline; }
+
+    /* ── RESOLUTION BANNER ── */
+    .resolution {
+      background: var(--accent-lt);
+      border-left: 4px solid var(--accent);
+      padding: 1.5rem 2rem;
+      margin: 0 2rem;
+      max-width: 1080px;
+      margin: 0 auto 0;
+    }
+    .resolution-meta {
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .4rem;
+    }
+    .resolution h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      margin-bottom: .5rem;
+    }
+    .resolution p { font-size: .9rem; color: var(--mid); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem;
+      text-align: center;
+      font-size: .8rem;
+      color: var(--mid);
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <span class="nav-logo">Consumer Rights Commission</span>
+    <ul class="nav-links">
+      <li><a href="#">Resolutions</a></li>
+      <li><a href="#">Articles</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Apply</a></li>
+    </ul>
+  </nav>
+
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span>Resolution 001: Right to Repair — Under Review</span>
+      <span>·</span>
+      <span>New Article: Software License Abuse and What You Can Do</span>
+      <span>·</span>
+      <span>Membership Applications Now Open</span>
+      <span>·</span>
+      <span>Resolution 001: Right to Repair — Under Review</span>
+      <span>·</span>
+      <span>New Article: Software License Abuse and What You Can Do</span>
+      <span>·</span>
+      <span>Membership Applications Now Open</span>
+    </div>
+  </div>
+
+  <div class="hero">
+    <p class="hero-eyebrow">Independent · Evidence-Based · Global</p>
+    <h1>Holding corporations accountable to the people they serve.</h1>
+    <p>The Consumer Rights Commission publishes evidence-based resolutions and supports consumer advocacy movements worldwide.</p>
+    <div class="hero-actions">
+      <a href="#" class="btn btn-primary">Apply for Membership</a>
+      <a href="#" class="btn btn-outline">Read Our Resolutions</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Latest Resolution</p>
+    <div class="resolution">
+      <p class="resolution-meta">Resolution 001 · Under Member Review</p>
+      <h3>On Manufacturer Restrictions to Independent Repair</h3>
+      <p>Evidence indicates that hardware manufacturers' warranty policies and parts restrictions result in measurable harm to consumers through increased costs and reduced product longevity. The Commission recommends members consider supporting Right to Repair legislation in their respective jurisdictions.</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Recent Articles</p>
+    <div class="card-grid">
+      <div class="card">
+        <span class="card-tag">Right to Repair</span>
+        <h3>Why Manufacturers Don't Want You Fixing Your Own Device</h3>
+        <p>An evidence-based look at how repair restrictions affect consumers and what legislative efforts are underway globally.</p>
+        <a href="#" class="card-link">Read Article →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Data Privacy</span>
+        <h3>What Your Apps Know About You — And Who They're Telling</h3>
+        <p>A breakdown of data broker ecosystems and documented cases of consumer data being sold without meaningful consent.</p>
+        <a href="#" class="card-link">Read Article →</a>
+      </div>
+      <div class="card">
+        <span class="card-tag">Subscription Practices</span>
+        <h3>The Dark Patterns Making It Hard to Cancel</h3>
+        <p>Documented UI manipulation tactics used by subscription services and their measurable impact on consumer spending.</p>
+        <a href="#" class="card-link">Read Article →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Consumer Rights Commission · Independent &amp; Member-Funded · <a href="#" style="color:inherit">Donate</a>
+  </footer>
+
+</body>
+</html>

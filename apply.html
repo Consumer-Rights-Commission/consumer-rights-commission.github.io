@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apply — Consumer Rights Commission</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo">Consumer Rights Commission</a>
+    <ul class="nav-links">
+      <li><a href="resolutions.html">Resolutions</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="apply.html" class="active">Apply</a></li>
+    </ul>
+  </nav>
+
+  <div class="ticker-wrap">
+    <div class="ticker-inner">
+      <span>WEBSITE UNDER DEVELOPMENT, DO NOT INTERACT</span>
+      <span>·</span>
+      <span>WEBSITE UNDER DEVELOPMENT, DO NOT INTERACT</span>
+      <span>·</span>
+    </div>
+  </div>
+
+  <div class="page-hero">
+    <p class="page-hero-eyebrow">Join the Commission</p>
+    <h1>Apply for Membership</h1>
+    <p>Membership is free and open to anyone with a genuine interest in consumer rights. Applications are reviewed by Commission staff on a rolling basis.</p>
+  </div>
+
+  <div class="form-wrap">
+    <p class="form-note">All fields are required. Your application will be reviewed within a few days. If approved, you will receive an email with further instructions. Membership may be revoked for bad-faith participation.</p>
+
+    <div class="form-group">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" placeholder="Your full name" />
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="you@example.com" />
+    </div>
+
+    <div class="form-group">
+      <label for="country">Country of Residence</label>
+      <input type="text" id="country" placeholder="Country" />
+    </div>
+
+    <div class="form-group">
+      <label for="interest">Why do you want to join the CRC?</label>
+      <textarea id="interest" placeholder="Briefly describe your interest in consumer rights and why you want to become a member..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="background">Relevant background (optional)</label>
+      <textarea id="background" placeholder="Any relevant experience, work, or knowledge related to consumer rights, law, advocacy, journalism, or related fields..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label>
+        <input type="checkbox" style="margin-right:.5rem;" />
+        I agree to abide by the Commission's conduct guidelines and understand that membership may be revoked for bad-faith participation.
+      </label>
+    </div>
+
+    <button class="btn btn-primary" onclick="handleSubmit()">Submit Application</button>
+
+    <p id="submit-msg" style="display:none; margin-top:1.5rem; font-size:.9rem; color:var(--accent); font-weight:600;">
+      Thank you — your application has been received. We will be in touch via email.
+    </p>
+  </div>
+
+  <footer>
+    © 2026 Consumer Rights Commission · Independent &amp; Member-Funded · <a href="#">Donate</a>
+  </footer>
+
+  <script>
+    function handleSubmit() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const country = document.getElementById('country').value.trim();
+      const interest = document.getElementById('interest').value.trim();
+      if (!name || !email || !country || !interest) {
+        alert('Please fill in all required fields before submitting.');
+        return;
+      }
+      document.getElementById('submit-msg').style.display = 'block';
+      document.querySelector('.btn-primary').disabled = true;
+      document.querySelector('.btn-primary').style.opacity = '.5';
+    }
+  </script>
+
+</body>
+</html>
