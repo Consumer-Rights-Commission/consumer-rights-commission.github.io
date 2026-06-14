@@ -69,10 +69,13 @@
       </label>
     </div>
 
-    <button class="btn btn-primary" onclick="handleSubmit()">Submit Application</button>
+    <button class="btn btn-primary" id="submit-btn" onclick="handleSubmit()">Submit Application</button>
 
     <p id="submit-msg" style="display:none; margin-top:1.5rem; font-size:.9rem; color:var(--accent); font-weight:600;">
       Thank you — your application has been received. We will be in touch via email.
+    </p>
+    <p id="error-msg" style="display:none; margin-top:1.5rem; font-size:.9rem; color:#842029; font-weight:600;">
+      Something went wrong. Please try again or email us directly at crcmail.official@gmail.com.
     </p>
   </div>
 
@@ -81,18 +84,52 @@
   </footer>
 
   <script>
-    function handleSubmit() {
+    async function handleSubmit() {
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const country = document.getElementById('country').value.trim();
       const interest = document.getElementById('interest').value.trim();
+      const checkbox = document.querySelector('input[type="checkbox"]');
+
       if (!name || !email || !country || !interest) {
         alert('Please fill in all required fields before submitting.');
         return;
       }
-      document.getElementById('submit-msg').style.display = 'block';
-      document.querySelector('.btn-primary').disabled = true;
-      document.querySelector('.btn-primary').style.opacity = '.5';
+      if (!checkbox.checked) {
+        alert('Please agree to the conduct guidelines before submitting.');
+        return;
+      }
+
+      const btn = document.getElementById('submit-btn');
+      btn.disabled = true;
+      btn.textContent = 'Submitting...';
+      btn.style.opacity = '.5';
+
+      try {
+        const response = await fetch('https://formspree.io/f/maqzakwl', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({
+            name,
+            email,
+            country,
+            interest,
+            background: document.getElementById('background').value.trim()
+          })
+        });
+
+        if (response.ok) {
+          document.getElementById('submit-msg').style.display = 'block';
+          btn.style.display = 'none';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (err) {
+        document.getElementById('error-msg').style.display = 'block';
+        btn.disabled = false;
+        btn.textContent = 'Submit Application';
+        btn.style.opacity = '1';
+      }
     }
   </script>
 
